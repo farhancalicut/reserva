@@ -1,0 +1,31 @@
+{% extends 'temp/user_2_home.html' %}
+{% block base %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>turf</title>
+</head>
+<body>
+<form method="post">
+    {% csrf_token %}
+	<table>
+		
+		<tr>
+			<td>complaints</td>
+			<td><textarea name="comp" rows="5" cols="25" required="" class="form-control"></textarea></td>
+		</tr>
+		<tr>
+			<td>
+				<input type="submit" name="sub" value="submit" class="btn btn-primary">
+			</td>
+		</tr>
+	</table>
+    {% if msg %}
+        <script>
+        alert(message)
+        </script>
+    {% endif %}
+</form>
+</body>
+</html>
+{% endblock %}

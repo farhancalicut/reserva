@@ -1,0 +1,57 @@
+{% extends 'temp/manager_2_home.html' %}
+{% block base %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>booking</title>
+</head>
+<style>
+#customers {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #04AA6D;
+  color: white;
+}
+</style>
+<body>
+	<table border="1" class="table table-bordered" id="customers">
+		<tr>
+            <th>User</th>
+            <th>Phone</th>
+			<th>time</th>
+			<th>date</th>
+			<th>Payment status</th>
+			<th>Turf details</th>
+		</tr>
+        {% for i in x %}
+		<tr>
+            <td>{{ i.user.name }}</td>
+            <td>{{ i.user.contact_number }}</td>
+			<td>{{i.booking.start_time}} - {{i.booking.end_time}}</td>
+			<td>{{ i.booking.date }}</td>
+			<td>{{ i.status }}</td>
+			<td>{{ i.booking.turf.turf_name }}, {{ i.booking.turf.address}}, {{ i.booking.turf.categoty}}</td>
+			
+		</tr>
+        {% endfor %}
+	</table>
+
+</body>
+</html>
+{% endblock %}

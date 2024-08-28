@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      #map {
+        height: 400px;
+        width: 100%;
+       }
+    </style>
+  </head>
+  <body>
+{#    <p>My Google Maps Demo</p>#}
+    <input type="hidden" name="lat" id="lat" value="{{ lat }}">
+    <input type="hidden" name="lon" id="lon" value="{{ lon }}">
+
+    <div id="map"></div>
+    <script>
+      function initMap() {
+        var lt=parseFloat(document.getElementById('lat').value);
+        var ln=parseFloat(document.getElementById('lon').value);
+        var test= {lat: lt, lng: ln};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 15,
+          center: test,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        });
+        var marker = new google.maps.Marker({
+          position: test,
+          map: map
+        });
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyChT4ujGXrMnr-Ley5rIkWKKLxW7UIfSU4&callback=initMap">
+    </script>
+  </body>
+</html>

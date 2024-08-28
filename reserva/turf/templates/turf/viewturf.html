@@ -1,0 +1,126 @@
+{% extends 'temp/user.html' %}
+{% block base2 %}
+{#<!DOCTYPE html>#}
+{#<html>#}
+{#<head>#}
+{#	<title>view turf</title>#}
+{#</head>#}
+{#<style>#}
+{##customers {#}
+{#  font-family: Arial, Helvetica, sans-serif;#}
+{#  border-collapse: collapse;#}
+{#  width: 100%;#}
+{#}#}
+{##}
+{##customers td, #customers th {#}
+{#  border: 1px solid #ddd;#}
+{#  padding: 8px;#}
+{#}#}
+{##}
+{##customers tr:nth-child(even){background-color: #f2f2f2;}#}
+{##}
+{##customers tr:hover {background-color: #ddd;}#}
+{##}
+{##customers th {#}
+{#  padding-top: 12px;#}
+{#  padding-bottom: 12px;#}
+{#  text-align: left;#}
+{#  background-color: #04AA6D;#}
+{#  color: white;#}
+{#}#}
+{#</style>#}
+{#<body>#}
+{#<form method="post">#}
+{#    {% csrf_token %}#}
+{#    <td><input type="text" name="search"placeholder="Search Here"><input type="submit" value="search" class="btn btn-primary"></td>#}
+{#</form>#}
+{#	<table border="1" class="table table-bordered" id="customers" style="margin-top: 20px">#}
+{#		<tr>#}
+{#			<td>turf name</td>#}
+{#			<td>address</td>#}
+{#            <td>Price</td>#}
+{#			<td>status</td>#}
+{#			#}
+{#		</tr>#}
+{#        {% for i in x %}#}
+{#		<tr>#}
+{#			#}
+{#			<td>{{ i.turf_name }}</td>#}
+{#			<td>{{ i.address }}</td>#}
+{#            <td>{{ i.price }}</td>#}
+{#			<td>{{ i.status }}</td>#}
+{#            <td><a href="/booking/post_booking/{{ i.turf_id }}"class="btn btn-primary">Book</a> </td>#}
+{#			#}
+{#		</tr>#}
+{#        {% endfor %}#}
+{#	</table>#}
+{##}
+{#</body>#}
+{#</html>#}
+{#{% endblock %}#}
+
+<!-- Property List Start -->
+        <div class="container-xxl py-5">
+            <div class="container">
+                <div class="row g-0 gx-5 align-items-end">
+                    <div class="col-lg-6">
+                        <div class="text-start mx-auto mb-5 wow slideInLeft" data-wow-delay="0.1s">
+                            <h1 class="mb-3">Property Listing</h1>
+                            <p>Search and find the perfect turf with ease and explore the exciting world of sports.</p>
+                        </div>
+                    </div>
+                    <!-- <div class="col-lg-6 text-start text-lg-end wow slideInRight" data-wow-delay="0.1s">
+                        <ul class="nav nav-pills d-inline-flex justify-content-end mb-5">
+                            <li class="nav-item me-2">
+                                <a class="btn btn-outline-primary active" data-bs-toggle="pill" href="#tab-1">Featured</a>
+                            </li>
+                            <li class="nav-item me-2">
+                                <a class="btn btn-outline-primary" data-bs-toggle="pill" href="#tab-2">For Sell</a>
+                            </li>
+                            <li class="nav-item me-0">
+                                <a class="btn btn-outline-primary" data-bs-toggle="pill" href="#tab-3">For Rent</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div> -->
+
+                <div class="tab-content">
+
+                    <div id="tab-1" class="tab-pane fade show p-0 active">
+
+                        <div class="row g-4">
+                             {% for i in x %}
+                            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                                <div class="property-item rounded overflow-hidden">
+                                    <div class="position-relative overflow-hidden">
+                                        <a href=""><img class="img-fluid" src="/static/{{ i.image }}" alt=""></a>
+{#                                        <div class="bg-primary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">ready to play</div>#}
+                                        <div class="bg-white rounded-top text-primary position-absolute start-0 bottom-0 mx-4 pt-1 px-3">{{ i.categoty }}</div>
+                                    </div>
+                                    <div class="p-4 pb-0">
+                                        <h5 class="text-primary mb-3">{{ i.price }}</h5>
+                                        <a class="d-block h5 mb-2" href="">{{ i.turf_name }}</a>
+                                        <p><i class="fa fa-map-marker-alt text-primary me-2"></i>{{ i.place }}
+{#                                             <p><i class="fa fa-map-marker-alt text-primary me-2"></i><a href="i.longitude i.latitude"></a>#}                   <br>  <a class="d-block h5 mb-2 btn btn-primary" href="/turf/map/{{ i.turf_id }}">Map</a>
+                                            <a class="d-block h5 mb-2 btn btn-primary" href="/booking/post_booking/{{ i.turf_id }}">Book</a>
+
+                                    </div>
+{#                                    <div class="d-flex border-top">#}
+{#                                        <small class="flex-fill text-center border-end py-2"><i class="fa fa-ruler-combined text-primary me-2"></i>1000 Sqft</small>#}
+{#                                        <small class="flex-fill text-center border-end py-2"><i class="fa fa-bed text-primary me-2"></i>3 Bed</small>#}
+{#                                        <small class="flex-fill text-center py-2"><i class="fa fa-bath text-primary me-2"></i>2 Bath</small>#}
+{#                                    </div>#}
+                                </div>
+                            </div>
+                            {% endfor %}
+{#                            <div class="col-12 text-center">#}
+{#                                <a class="btn btn-primary py-3 px-5" href="">Browse More Property</a>#}
+{#                            </div>#}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            </div>
+        </div>
+        {% endblock %}

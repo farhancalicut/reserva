@@ -1,0 +1,82 @@
+{#<!DOCTYPE html>#}
+{#<html lang="en">#}
+{#<head>#}
+{#    <meta charset="UTF-8">#}
+{#    <title>Title</title>#}
+{#</head>#}
+{#<body>#}
+{##}
+{#</body>#}
+{#</html>#}
+{% extends 'temp/user_2_home.html' %}
+{% block base %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>turf</title>
+</head>
+<style>
+#customers {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #04AA6D;
+  color: white;
+}
+</style>
+<body>
+<form method="post">
+        {% csrf_token %}
+     <table id="customers">
+        <tr>
+            <th>Content</th>
+            <th>Link</th>
+        </tr>
+        <tr>
+            <td>17 law of football</td>
+            <td><a href="https://youtu.be/yFq9FEAYk6s?feature=shared" target="_blank" > Video</a></td>
+        </tr>
+        <tr>
+            <td>Soccer reference signal guide</td>
+            <td><a href="https://youtu.be/xh0nbXkWXs0?feature=shared" target="_blank"> Video</a></td>
+        </tr>
+        <tr>
+            <td>Football position by numbers</td>
+            <td><a href="https://youtu.be/-D2Lu4nrn4w?feature=shared" target="_blank" > Video</a></td>
+        </tr>
+{#        <tr>#}
+{#            <td>Drag to back</td>#}
+{#            <td><a href="https://youtu.be/yFq9FEAYk6s?feature=shared" target="_blank" > Video</a></td>#}
+{#        </tr>#}
+{#        <tr>#}
+{#            <td>17 law of football</td>#}
+{#            <td><a href="https://youtu.be/YpuAC0whCY4?feature=shared" target="_blank" > Video</a></td>#}
+{#        </tr>#}
+    </table>
+
+
+{#    {% if msg %}#}
+{#	<script>#}
+{#		var message="{{msg}}"#}
+{#		alert('Successfully Updated')#}
+{#		</script>#}
+{#	{% endif %}#}
+</form>
+ </body>
+</html>
+{% endblock %}

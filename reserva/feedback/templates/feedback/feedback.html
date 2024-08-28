@@ -1,0 +1,73 @@
+{% extends 'temp/user_2_home.html' %}
+{% block base %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>turf</title>
+</head>
+<style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .formbg {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="text"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            resize: vertical;
+        }
+        input[type="submit"] {
+            background-color: #04AA6D;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+<body>
+<form method="post">
+    {% csrf_token %}
+	<table>
+		<div class="formbg">
+		<h2>Comment your valuable Opinion</h2>
+		<label for="feedback">Your Feedback:</label>
+            <textarea id="feedback" name="feed" rows="2" required=""></textarea>
+
+            <input type="submit" name="sub" value="Submit Feedback">
+        </div>
+	</table>
+    {% if msg %}
+        <script>
+        alert(message)
+        </script>
+    {% endif %}
+    </form>
+
+</body>
+</html>
+{% endblock %}

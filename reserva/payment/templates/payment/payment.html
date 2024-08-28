@@ -1,0 +1,39 @@
+{% extends 'temp/user_2_home.html' %}
+{% block base %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>turf</title>
+</head>
+<body>
+<form method="post">
+    {% csrf_token %}
+	<table>
+	
+		
+		<tr>
+			<td>amount</td>
+			<td><input type="number" name="ti" required="" value="{{ x.booking.turf.price }}" readonly class="form-control"></td>
+		</tr>
+
+		<tr>
+			<td>turf name</td>
+            <td><input type="text" name="vv" required="" value="{{ x.booking.turf.turf_name }}" readonly class="form-control"></td>
+
+		</tr>
+		<tr>
+			<td>
+				<input type="submit" name="sub" value="submit" class="btn btn-primary" onclick=" return confirm('Are you sure?')">
+			</td>
+		</tr>
+	</table>
+    </form>
+	<p class="text-danger">{{msg}}</p>
+{% if message %}
+    <script>
+    alert(message)
+    </script>
+{% endif %}
+</body>
+</html>
+{% endblock %}

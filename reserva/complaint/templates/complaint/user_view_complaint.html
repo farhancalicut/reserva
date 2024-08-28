@@ -1,0 +1,59 @@
+{% extends 'temp/user_2_home.html' %}
+{% block base %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>view complient</title>
+</head>
+<style>
+#customers {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #04AA6D;
+  color: white;
+}
+</style>
+<style>
+        .scrollable-table {
+            max-height: 400px; /* Set the maximum height as per your requirement */
+            overflow: auto; /* Add a scroll bar when content exceeds the container's height */
+        }
+    </style>
+<body>
+<div class="scrollable-table">
+	<table border="2" class="table table-bordered" id="customers">
+		<tr>
+			<th>COMPLAINTS</th>
+			<th>DATE&TIME</th>
+{#			<th>REPLAY</th>#}
+            <th>Action</th>
+		</tr>
+        {% for i in x %}
+		<tr>
+			<td>{{ i.complaint }}</td>
+			<td>{{ i.date_time }}</td>
+{#			<td>{{ i.replay }}</td>#}
+            <td><a href="/complaint/dltcomp/{{ i.comp_id }}" class="btn btn-danger" onclick=" return confirm('Are you sure?')">Delete</a></td>
+		</tr>
+        {% endfor %}
+	</table>
+</div>
+</body>
+</html>
+{% endblock %}

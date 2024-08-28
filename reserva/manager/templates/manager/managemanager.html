@@ -1,0 +1,60 @@
+{% extends 'temp/admin_2_home.html' %}
+{% block base %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>managemanager</title>
+</head>
+<style>
+#customers {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #04AA6D;
+  color: white;
+}
+</style>
+<body>
+	<table border="2" id="customers">
+		<tr>
+			<th>NAME</th>
+			<th>ADDRESS</th>
+			<th>QUALIFICATION</th>
+            <th>STATUS</th>
+            <th>ACTIONS</th>
+		</tr>
+        {% for i in x %}
+		<tr>
+			<td>{{ i.name }}</td>
+			<td>{{ i.address }}</td>
+			<td>{{ i.qualification }}</td>
+            <td>{{ i.status }}</td>
+			<td><a href="/manager/aprv/{{ i.manager_id }}" class="btn btn-primary">Approve </a>
+			<a href="/manager/rej/{{ i.manager_id }}" class="btn btn-primary">Reject </a></td>
+		</tr>
+        {% endfor %}
+	</table>
+{% if msg %}
+<script>
+  var m="{{msg}}"
+  alert(m)
+</script>
+{% endif %}
+</body>
+</html>
+{% endblock %}

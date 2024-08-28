@@ -1,0 +1,72 @@
+{% extends 'temp/manager_2_home.html' %}
+{% block base %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>view_user</title>
+</head>
+<style>
+#customers {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #04AA6D;
+  color: white;
+}
+</style>
+<body>
+<table border="1" class="table table-bordered">
+		<tr>
+			<td>booking_id</td>
+            <td>time</td>
+            <td>date</td>
+            <td>turf_id</td>
+            <td>User</td>
+            <td>status</td>
+
+		</tr>
+    {% for i in x %}
+		<tr>
+			<td>{{ i.booking_id }}</td>
+
+      {% if i.booking.start_time < 12 %}
+      <td>{{ i.booking.start_time }} AM</td>
+        {% else %}                
+      <td>{{ i.booking.start_time }} PM</td>
+        {% endif %}
+
+			<td>{{ i.booking.date }}</td>
+			<td>{{ i.booking.turf.turf_name }}</td>
+            <td>{{ i.booking.user.name }}</td>
+			<td>{{ i.booking.status }}</td>
+      {% if i.booking.status == 'approved' %}
+			<td><a href="/booking/rej/{{ i.booking.booking_id }}" class="btn btn-danger" onclick=" return confirm('Are you sure?')">Reject</a></td>
+      {% elif i.booking.status == 'pending' %}
+			<td><a href="/booking/aprv/{{ i.booking.booking_id }}" class="btn btn-success" onclick=" return confirm('Are you sure?')">Approve</a></td>
+			<td><a href="/booking/rej/{{ i.booking.booking_id }}" class="btn btn-danger" onclick=" return confirm('Are you sure?')">Reject</a></td>
+      {% else %}      
+			<td><a href="/booking/aprv/{{ i.booking.booking_id }}" class="btn btn-success" onclick=" return confirm('Are you sure?')">Approve</a></td>
+      {% endif %}
+		</tr>
+    {% endfor %}
+	</table>
+
+</body>
+</html>
+{% endblock %}

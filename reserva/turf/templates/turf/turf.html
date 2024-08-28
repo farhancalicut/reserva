@@ -1,0 +1,100 @@
+{% extends 'temp/manager_2_home.html' %}
+{% block base %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>turf</title>
+</head>
+ <script>
+        function checkImageSize() {
+            var input = document.getElementById('img');
+            if (input.files && input.files[0]) {
+                var fileSize = input.files[0].size; // in bytes
+                // You can set your own maximum file size limit, for example, 1MB (in bytes)
+                var maxSize = 600 * 400; // 1MB
+                if (fileSize > maxSize) {
+                    alert('File size exceeds the limit of 1MB.');
+                    // Clear the file input field if the file size is too large
+                    input.value = '';
+                }
+            }
+        }
+    </script>
+<body>
+<center>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+	<table>
+		
+
+		<tr>
+			<td>turf name</td>
+			<td><input type="text" name="tn" required="" class="form-control"></td>
+		</tr>
+        	<tr>
+			<td>Pasword</td>
+			<td><input type="password" name="psw" required="" class="form-control"></td>
+		</tr>
+		<tr>
+			<td>place</td>
+			<td><input type="text" name="adr" required="" class="form-control"></td>
+		</tr>
+		<tr>
+			<td>category</td>
+			<td><input type="text" name="ctg" required="" class="form-control"></td>
+		</tr>
+        <tr>
+			<td>Image</td>
+			<td><input type="file" name="img"  id="img" required="" class="form-control" onchange="checkImageSize()"><p>size=600*400 and less than 1mp</p></td>
+
+		</tr>
+        <tr>
+			<td>price</td>
+			<td><input type="text" name="pp" required="" class="form-control"></td>
+		</tr>
+        <tr>
+			<td>Longitude</td>
+			<td><input type="text" name="long" required="" class="form-control" id="lon"></td>
+		</tr>
+        <tr>
+			<td>Latitude</td>
+			<td><input type="text" name="lati" required="" class="form-control" id="lat"></td>
+		</tr>
+        <tr>
+            <td></td>
+            <td><button onclick="getLocation()">Get location</button> </td>
+        </tr>
+		<tr>
+			<td>
+				<input type="submit" name="sub" value="Register" class="btn btn-primary">
+			</td>
+		</tr>
+
+	</table>
+    {% if message %}
+        <script>
+        alert(' Successfully Registered')
+        </script>
+    {% endif %}
+    </form>
+    <script>
+    function getLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(sendLocation);
+        } else {
+            alert("Geolocation is not supported by this browser.");
+        }
+    }
+    function sendLocation(position) {
+        const latitude = position.coords.latitude;
+        const longitude = position.coords.longitude;
+        document.getElementById('lat').value=latitude.toString();
+        document.getElementById('lon').value=longitude.toString();
+
+    }
+</script>
+
+    </center>
+</body>
+</html>
+{% endblock %}

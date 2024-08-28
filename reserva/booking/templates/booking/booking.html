@@ -1,0 +1,114 @@
+
+{% extends 'temp/user_2_home.html' %}
+{% block base %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>turf</title>
+</head>
+<style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .formbg {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .profile-info input[type="text"],
+        .profile-info textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .profile-info button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .profile-info button:hover {
+            background-color: #45a049;
+        }
+    </style>
+<body>
+<form method="post">
+    {% csrf_token %}
+{#	<table>#}
+{#	    <tr>#}
+{#			<td>turf name</td>#}
+{#            <td><input type="text" name="ti"required="" value="{{ x.turf_name }}" readonly class="form-control"></td>#}
+{##}
+{#		</tr>#}
+{#        <tr>#}
+{#			<td>turf amount</td>#}
+{#            <td><input type="text" name="ti"required="" value="{{ x.price }}" readonly class="form-control"></td>#}
+{##}
+{#		</tr>#}
+{#		<tr>#}
+{#			<td>date</td>#}
+{#			<td><input type="date" id="date" name="da"required="" class="form-control">#}
+{#            <script>#}
+{#                document.getElementById("date").setAttribute("min", minDate);#}
+{#            </script>#}
+{#            </td>#}
+{#		</tr>#}
+{#		<tr>#}
+{#			<td>time</td>#}
+{#			<td><select name="ti" id="">				#}
+{#			{% for i in s %}#}
+{#				<option value="{{i.slot_id}}">{{i.slot}}  {{i.e_time}} </option>#}
+{#			{% endfor %}#}
+{#			</select></td>#}
+{#		</tr>#}
+{##}
+{#		<tr>#}
+{#			<td>#}
+{#				<input type="submit" name="sub" value="Make Payment" class="btn btn-primary">#}
+{#			</td>#}
+{#		</tr>#}
+{#	</table>#}
+
+    <div class="formbg">
+        <h2>Book Your Slot</h2>
+        <div class="profile-info">
+            <label >Turf Name:</label>
+           <input type="text" name="ti"required="" value="{{ x.turf_name }}" readonly class="form-control">
+            <label>Turf Amount:</label>
+            <input type="text" name="ti"required="" value="{{ x.price }}" readonly class="form-control">
+            <label >Date:</label>
+            <input type="date" id="date" name="da"required="" class="form-control">
+            <script>
+                document.getElementById("date").setAttribute("min", minDate);
+            </script><br>
+            <label >Time:</label>
+           <select name="ti" id="" class="btn-sm" >
+			{% for i in s %}
+				<option value="{{i.slot_id}}">{{i.slot}}  {{i.e_time}} </option>
+			{% endfor %}
+			</select>
+            <br><br>
+           	<input type="submit" name="sub" value="Make Payment" class="btn btn-primary" >
+        </div>
+    </div>
+</form>
+{#{% if msg %}#}
+{#<script>#}
+{#	var message="{{msg}}"#}
+{#	alert(message)#}
+{#	</script>#}
+{#{% endif %}#}
+</body>
+</html>
+{% endblock %}

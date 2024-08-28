@@ -1,0 +1,30 @@
+{% extends 'temp/admin_2_home.html' %}
+{% block base %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table border="1" class="table table-bordered">
+		<tr>
+            <td>manager id</td>
+			<td>turf id</td>
+			<td>time</td>
+			<td>date</td>
+
+		</tr>
+    {% for i in x %}
+		<tr>
+			<td>{{ i.manager.name }}</td>
+			<td>{{ i.turf.turf_name }}</td>
+			<td>{{ i.time }}</td>
+			<td>{{ i.date }}</td>
+
+		</tr>
+    {% endfor %}
+	</table>
+</body>
+</html>
+{% endblock %}

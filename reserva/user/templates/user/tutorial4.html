@@ -1,0 +1,82 @@
+{#<!DOCTYPE html>#}
+{#<html lang="en">#}
+{#<head>#}
+{#    <meta charset="UTF-8">#}
+{#    <title>Title</title>#}
+{#</head>#}
+{#<body>#}
+{##}
+{#</body>#}
+{#</html>#}
+{% extends 'temp/user_2_home.html' %}
+{% block base %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>turf</title>
+</head>
+<style>
+#customers {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #04AA6D;
+  color: white;
+}
+</style>
+<body>
+<form method="post">
+    {% csrf_token %}
+     <table id="customers">
+        <tr>
+            <th>Column 1</th>
+            <th>Column 2</th>
+        </tr>
+        <tr>
+            <td>ACL</td>
+            <td><a href="https://youtu.be/Vi0WrnkpMJE?feature=shared" target="_blank">Video</a></td>
+        </tr>
+        <tr>
+            <td>MCL</td>
+            <td><a href="https://youtu.be/1ppC8e1nEHo?feature=shared" target="_blank" > Video</a></td>
+        </tr>
+        <tr>
+            <td>Jumpers knee</td>
+            <td><a href="https://youtu.be/EbgnAuJGApQ?feature=shared" target="_blank" > Video</a></td>
+        </tr>
+        <tr>
+           <td>Quad strain</td>
+            <td><a href="https://youtu.be/BhQimqvU1tM?feature=shared" target="_blank" > Video</a></td>
+        </tr>
+{#        <tr>#}
+{#            <td>17 law of football</td>#}
+{#            <td><a href="https://youtu.be/yFq9FEAYk6s?feature=shared" target="_blank" > Video</a></td>#}
+{#        </tr>#}
+    </table>
+{#<form method="post">#}
+{#    {% csrf_token %}#}
+{#    {% if msg %}#}
+{#	<script>#}
+{#		var message="{{msg}}"#}
+{#		alert('Successfully Updated')#}
+{#		</script>#}
+{#	{% endif %}#}
+</form>
+ </body>
+</html>
+{% endblock %}
